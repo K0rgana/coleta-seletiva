@@ -12,6 +12,9 @@ Este sistema visa ajudar o coletor a encontrar descarte facilitando sua rotina e
 
 ## Tecnologias
 
+- Vue
+- Laravel
+
 ## Colaboradores 
 
 - Morgana Albuquerque (mfa1@discente.ifpe.edu.br)
