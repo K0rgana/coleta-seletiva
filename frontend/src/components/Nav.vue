@@ -4,7 +4,7 @@
       <h2>Crawler</h2>
       <div>
         <router-link to="/">Entrar</router-link>
-        <router-link to="/about">Cadastrar</router-link>
+        <router-link to="/signup">Cadastrar</router-link>
       </div>
     </div>
     <router-view/>
