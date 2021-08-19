@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AdController;
 use App\Http\Controllers\AuthController;
 
@@ -16,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+Route::post('cadastrar', [\App\Http\Controllers\AuthController::class, 'register']);
 
 Route::group([
 
@@ -36,3 +39,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::middleware('auth:api')->apiresource('ad', AdController::class);
+
+Route::apiresource('categories', CategoryController::class)->except(['show']);
