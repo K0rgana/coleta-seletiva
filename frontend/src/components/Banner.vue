@@ -7,7 +7,23 @@
     </h3>    
   </div>
   <div class="login">
-<p>form login</p>
+    <form class="form">
+      <input
+          type="email"
+          placeholder="Email"
+          v-model="email"
+          class="form-control"
+      />
+      <input
+          type="password"
+          placeholder="Senha"
+          v-model="password"
+          class="form-control"
+      />
+      <button type="button" @click="onSubmit" class="submit">
+          Entrar
+      </button>
+    </form>
   </div>
 </div>
 </template>
@@ -15,6 +31,21 @@
 <script>
 export default {
   name: 'Banner',
+  data(){
+    return {
+        email: '',
+        password: '',
+    }
+  },
+  methods:{
+    async login(){
+      const logged = await this.$store.dispatch('login', [this.email, this.password])
+      console.log(logged)
+      if(logged){
+          this.$router.push('/home')
+      }
+    }
+  }
 }
 </script>
 
