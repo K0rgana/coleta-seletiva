@@ -19,7 +19,7 @@
       />
 
       <input
-          type="email"
+          type="phone"
           placeholder="Telefone"
           v-model="phone"
           class="form-control"
@@ -37,13 +37,13 @@
           class="form-control"
       />
 
-      <span>Eu sou: {{ selected }}</span> 
+      <!-- <span>Eu sou: {{ selected }}</span> 
 
       <select v-model="selected">
         <option disabled value="">Selecione</option>
         <option>Descartante</option>
         <option>Coletor</option>
-      </select>
+      </select> -->
 
        <!-- <select v-model="selected">
         <option v-for="option in options" :value="option.text" :key="option.id">
@@ -54,7 +54,7 @@
         <button type="button" @click="clearForm">
           Limpar
         </button>
-        <button type="button" @click="onSubmit" class="submit">
+        <button type="button" @click="register" class="submit">
           Cadastrar
         </button>
       </div>
@@ -71,24 +71,22 @@ export default {
   ],
   selected: 1, */
   methods: {
-    onSubmit() {
-      this.signUp.push({
-        name: this.name,
-        email: this.email, 
-        phone: this.phone,
-        password: this.password,
-        confirm: this.confirm,
-      });
-      this.clearForm();
-    },
-    clearForm() {
-      this.name = "";
-      this.email = "";
-      this.phone = "";
-      this.password = "";
-      this.confirm = "";
-      this.selected = "";
-    },
+    register(){
+      if(this.password != this.confirm){
+          console.log('senhas diferentes')
+          return
+      }
+      let userData = {
+          name: this.name,
+          email: this.email,
+          phone: this.phone,
+          password: this.password 
+      }  
+      const isCreated = this.$store.dispatch('register', userData)
+      if(isCreated){
+          this.$router.push('/')
+      } 
+    }
   },
 };
 </script>
@@ -101,7 +99,7 @@ export default {
 
   & input, select{
     height: 2rem;
-    width: 50vw;
+    width: 40vw;
     margin: 0.5rem;
     
     border: #2c3e50 solid 1px;
